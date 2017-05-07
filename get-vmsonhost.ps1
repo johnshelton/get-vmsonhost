@@ -25,8 +25,6 @@ param (
 )
 #
 Clear-Host
-# Define Output Variable
-$AllVMInfo = @()
 #
 # Load VMWare PSSnapin
 #
@@ -49,6 +47,8 @@ IF($PathExists -eq $False)
 #
 $CountVCenterServers = $VCenterServers.Count
 foreach($VCenterServer in $VCenterServers){
+  # Define Output Variable
+  $AllVMInfo = @()
   connect-viserver $VCenterServer
   $VCenterServersProcessed++
   $PercentVCenterServers = ($VCenterServersProcessed/$CountVCenterServers*100)
